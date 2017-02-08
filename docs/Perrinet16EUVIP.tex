@@ -1,14 +1,14 @@
+\def\Camera{0}%
+\def\Camera{1}%
+\def\Draft{1}% draft=1 or no draft = 0
+\def\Draft{0}% draft=1 or no draft = 0
+\def\Supp{0}% does not include supp material
+\def\Supp{1}% includes supp material
 %!TeX TS-program = Lualatex
 %!TeX encoding = UTF-8 Unicode
 %!TeX spellcheck = en-US
 %!BIB TS-program = bibtex
 % https://cmt3.research.microsoft.com/EUVIP2016/Submission/CameraReadyDetails/38
-\def\Camera{0}%
-\def\Camera{1}%
-\def\Draft{1}% draft=1 or no draft = 0
-\def\Draft{0}% draft=1 or no draft = 0
-\def\Supp{1}% includes supp material
-\def\Supp{0}% does not include supp material
 % >>> YOU ARE HERE <<<
 % Template for EUVIP-2014 paper; to be used with:
 %          spconf.sty  - ICASSP/ICIP/EUVIP LaTeX style file, and
@@ -18,9 +18,9 @@
 % --------------------------------------------------------------------------
 \newcommand{\Author}{Perrinet}%
 \newcommand{\FirstName}{Laurent U.}%
-\newcommand{\Institute}{Institut de Neurosciences de la Timone (UMR7289), CNRS / Aix-Marseille Universit\'e}%
+\newcommand{\Institute}{Institut de Neurosciences de la Timone (UMR7289)\\ CNRS / Aix-Marseille Universit\'e}%
 \newcommand{\Address}{27, Bd. Jean Moulin, 13385 Marseille Cedex 5, France}%
-\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\Website}{http://invibe.net/LaurentPerrinet/Publications/Perrinet16EUVIP}%
 \newcommand{\Email}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{Biologically-inspired characterization of sparseness in natural images}%
 \newcommand{\Abstract}{
@@ -32,8 +32,8 @@ L.U.P.\ was supported by ANR project "BalaV1" ANR-13-BSV4-0014-02. Correspondenc
 } %
 
 % --------------------------------------------------------------------------
-\documentclass{article}
-\usepackage{spconf,amsmath,epsfig}
+\documentclass[a4paper, 10pt, twocolumns]{article}
+\usepackage{amsmath,epsfig}%spconf,
 \usepackage[numbers,comma,sort&compress]{natbib} % ,round
 \usepackage{tikz}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
@@ -95,10 +95,15 @@ L.U.P.\ was supported by ANR project "BalaV1" ANR-13-BSV4-0014-02. Correspondenc
 %
 % Single address.
 % ---------------
-\name{\FirstName\ \Author\thanks{\Email\ --- {\Website}}}
-\address{%Paper ID \EUVIPPaperID \\
- \Institute\ \\ \Address}
+%\name{\FirstName\ \Author\thanks{\Email\ --- {\Website}}}
+%\address{%Paper ID \EUVIPPaperID \\
+% \Institute\ \\ \Address}
 %
+\author{%
+\FirstName\ \Author\thanks{See {\Website}.}\\
+\Institute\ \\ \Address\ \\
+\texttt{\Email} \\
+}
 % For example:
 % ------------
 %\address{School\\
@@ -146,18 +151,35 @@ pdfsubject={\Acknowledgments}%
 \Abstract
 \end{abstract}
 %
-\begin{keywords}
-\Keywords
-\end{keywords}
-%
-
+%\begin{keywords}
+%\Keywords
+%\end{keywords}
+%%
+\textbf{Keywords} : \Keywords
+%--------------------------------------------------------------------------------------------------%
+\paragraph{BibTex entry}~~\\
+% to update from http://invibe.net/cgi-bin/index.cgi/Publications/Ravello17droplets?action=raw
+\begin{verbatim}
+@inproceedings{Perrinet16EUVIP,
+author = {Perrinet, Laurent U.},
+title = {Biologically-inspired characterization of sparseness in natural images},
+year = {2016}
+booktitle = {6th European Workshop on Visual Information Processing (EUVIP)},
+doi = {10.1109/EUVIP.2016.7764592},
+isbn = {978-1-5090-2781-1},
+month = {oct},
+pages = {1--6},
+publisher = {IEEE},
+url = {http://ieeexplore.ieee.org/document/7764592/},
+}
+\end{verbatim}
 %⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 \section{Motivation}
 %⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 %------------------------------%
 %: see Figure~\ref{fig:EUVIP_lena}
 \begin{figure}[ht!]%[p!]
-\centering{\includegraphics[width=.8\linewidth]{EUVIP-lena}}
+\centering{\includegraphics[width=.7\linewidth]{EUVIP-lena}}
 \caption{
 {\bf Sparse coding of natural images using log-Gabor edges and applied to ``Lena''}:
 An instance of the reconstruction of a natural image as a sum of elementary edges using sparse coding. Parameters for each edge are its position, orientation, scale and scalar amplitude of the coefficient. Edges are overlaid on this reconstructed image as colored segments, length denoting scale and hue the orientation\if\Supp1\ --- see SI Section~\ref{sec:sparse} for a full description of the algorithm\fi. Edges outside the dashed circle are discarded to avoid artifacts. Few edges (here $1024$) are necessary to efficiently represent the image: the distribution of features is \emph{sparse}. The position and orientation of the set of edges gives information about the shape of visual objects, while the distribution of coefficients characterizes the texture content of the image.
@@ -174,7 +196,7 @@ The different levels of sparseness observed in images are qualitatively linked t
 Our first contribution is to show that while the distribution of coefficients in natural images is stereotyped, the underlying parameters display some variability (see Figure~\ref{fig:EUVIP_sparseness}). Our second contribution is an efficient extension of a texture synthesis model which allows to parameterize the sparseness in the texture. This formulation is important to challenge the effects of the model's parameters in future neurophysiological experiments. Indeed, in neurophysiology, a popular technique to challenge the coding hypothesis is to test the system (V1) using complex stimuli in the form of stochastic stimuli~\citep{Touryan01}. These stimuli correspond to instances of the generative model for natural images which most likely describe a wide range of image instances. From that perspective, we motivate the generation of an optimal stimulation within a stationary Gaussian dynamic texture model (see Figure~\ref{fig:DropLets}). We base our model on a previously defined heuristic coined ``Motion Clouds''~\citep{Leon12}. These contributions show that overall, sparseness in natural images is an important parameter to understand natural scenes. Beyond the contribution to the understanding of the models underlying image representation which may have applications to tune computer vision algorithms, this may have applications outside computer vision, for instance for the optimal stimulation of neurophysiological settings as for instance in a retinal implant.
 %------------------------------%
 %: see Figure~\ref{fig:EUVIP_sparseness}
-\begin{figure*}[ht!]%[p!]
+\begin{figure*}[t!]%[p!]
 \centering{
 \begin{tikzpicture}
 \draw [anchor=north west] (.0\linewidth, 0) node {\includegraphics[width=.5\linewidth]{EUVIP-sparseness_raw_inset}};
@@ -184,7 +206,7 @@ Our first contribution is to show that while the distribution of coefficients in
 \end{tikzpicture}}
 \caption{
 {\bf Coefficients from the Sparse coding of images in the primary visual cortex (V1) follows regular statistics}: \textsf{(A-inset)}~Coefficients decrease as a function of their rank (average across images $\pm$ standard deviation). This decrease is faster when using a sparse coding mechanism (Matching Pursuit, 'MP') than when just ordering the linear coefficients ('lin'). \textsf{(A)}~For the sparse coding, we controlled the quality of the reconstruction from the edge information such that the residual energy is less than $5\%$ over the whole set of images, a criterion met on average when identifying $2048$ edges per image for images of size $256\times 256$ (that is, a relative sparseness of $\approx 0.02\%$ of activated coefficients).
-\textsf{(B)}~When observing on an image-by-image basis the histogram of the coefficients' amplitude, each follows a generic log-Normal probability density function, only controlled by two parameters (the mode and bandwidth $B$) for each of natural image. While the mode parameter did not vary significantly, higher values of $B$ qualitatively correspond to sparser structures\if\Supp1 (Supplementary Figure~\ref{fig:EUVIP_proba_scaled} shows that once scaled, these distribution align almost perfectly)\fi.
+\textsf{(B)}~When observing on an image-by-image basis the histogram of the coefficients' amplitude, each follows a generic log-Normal probability density function, only controlled by two parameters (the mode and bandwidth $B$) for each of natural image. While the mode parameter did not vary significantly, higher values of $B$ qualitatively correspond to sparser structures.%\if\Supp1 (Supplementary Figure~\ref{fig:EUVIP_proba_scaled} shows that once scaled, these distribution align almost perfectly)\fi.
 \textsf{(B-inset)}~The distribution of these sparseness parameters shows a variety of values from the most sparsely distributed (right, $B\approx1.$) to those containing mostly dense textures (left, $B\approx3.$).
 \label{fig:EUVIP_sparseness}}%
 \end{figure*}%
@@ -234,15 +256,12 @@ In this paper, we have characterized the different levels of sparseness which ar
 
 In a recent experimental project using such a set of textures, it has been shown that the neural code as recorded in the retina responds differentially to these different levels of sparseness~\citep{Ravello2015}. In particular, we used the set of stimuli (See Figure~\ref{fig:DropLets}) to evaluate the response on ganglion cells on an \emph{ex vivo} preparation and analyzed the response of the population of neurons as a function of the sparseness parameter. Such analysis proved that the retinal neural code showed differential responses with respect to the sparseness of images and preliminary measures on efficiency suggest that it is tuned for a given level of sparseness: In that experimental results, we have shown that there is a limit in sparseness for which the retina can respond optimally; beyond that point, the response is more or less the same, meaning that the retina is still coding the features present in the sparser sequences but is not responding to the additional features of the more dense sequences. We can relate these results to the hypothesis of optimal coding of natural scenes~\citep{Geisler:2008gu}, in which the visual system has a limited capacity to transmit information, it has adapted through evolution to a small subset of all the possible images and optimally code them, discarding the irrelevant information. Thus, the efficiency of the retina to code the stimuli reaches its peak at a sparseness level that would be closer to what the system has evolved to code, and when presented with stimuli containing more signals, it discards the additional information. Much research has been performed to investigate the relationship between natural images and optimal coding, although the focus has been mainly on the spatiotemporal correlations~\citep{Pitkow:2012dh,Rikhye:2015bg}. We have observed that when keeping the spatiotemporal components constant, the modulation of the sparseness of the stimuli has an effect on the retinal response, and more importantly, it allows us to see the level of sparseness beyond which the efficiency does not increase.
 
-It is important to note that these results are the outcome of an interdisciplinary convergence between image processing (to characterize sparseness in natural images), mathematical modeling (for the synthesis of textures) and neurophysiology (for the recordings and their analysis). In particular, in this original framework, neural recordings are not analyzed \emph{post-hoc}, but are instead tuned by the design of parameterized stimuli. In particular, these stimuli are defined from the analysis of natural images. One limit of the neurophysiological study is that we limited ourselves to a simplistic class of textons (Mexican-hat shaped profiles\if\Supp1 , see Supplementary Figure~\ref{fig:EUVIP_sparseness_dog}\fi), both for the analysis and synthesis but that ganglion cells in the retina are known to be selective to a wider class of stimulations. However, we believe that this class of stimuli is general enough to characterize a wide range of different cell types. Indeed, by looking at local combinations of events (such as doublets), one could characterize different sub-types of ganglion cells, both static, oriented or even moving, such as to characterize for instance directionally selective ganglion cells. In particular, by manipulating the statistics in the event's matrix $E$, one could target more specifically each of these sub-types. Moreover, while it  was found that such textures would be useful in characterizing the response of retinal neurons, this should prove also very useful to characterize the response of V1 neurons. In particular, it would be essential to tune the relation of ``neighboring edges'' as characterized by how close they are in visual space space but also in orientation and scale, as measured by the so-called ``association field''~\citep{PerrinetBednar15}.
+It is important to note that these results are the outcome of an interdisciplinary convergence between image processing (to characterize sparseness in natural images), mathematical modeling (for the synthesis of textures) and neurophysiology (for the recordings and their analysis). In particular, in this original framework, neural recordings are not analyzed \emph{post-hoc}, but are instead tuned by the design of parameterized stimuli. In particular, these stimuli are defined from the analysis of natural images. One limit of the neurophysiological study is that we limited ourselves to a simplistic class of textons (Mexican-hat shaped profiles\if\Supp1 , compare to Supplementary Figure~\ref{fig:EUVIP_loggabor}\fi), both for the analysis and synthesis but that ganglion cells in the retina are known to be selective to a wider class of stimulations. However, we believe that this class of stimuli is general enough to characterize a wide range of different cell types. Indeed, by looking at local combinations of events (such as doublets), one could characterize different sub-types of ganglion cells, both static, oriented or even moving, such as to characterize for instance directionally selective ganglion cells. In particular, by manipulating the statistics in the event's matrix $E$, one could target more specifically each of these sub-types. Moreover, while it  was found that such textures would be useful in characterizing the response of retinal neurons, this should prove also very useful to characterize the response of V1 neurons. In particular, it would be essential to tune the relation of ``neighboring edges'' as characterized by how close they are in visual space space but also in orientation and scale, as measured by the so-called ``association field''~\citep{PerrinetBednar15}.
 
 \if\Supp1
 \newpage
 %⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-\section{Supplementary material}
-%⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-%⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-\section{Sparse coding algorithm}
+\section{Supplementary material: Sparse coding algorithm}
 %⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 \label{sec:sparse} % \if\Supp1 ; see SI Section~\ref{sec:sparse} for a full description of the algorithm
 
@@ -301,7 +320,7 @@ while preserving the precision of the representation.
 %------------------------------%
 %: \if\Supp1 See Supplementary Figure~\ref{fig:EUVIP_loggabor} \fi
 \begin{figure}%[ht!]%[p!]
-\centering{\includegraphics[width=\linewidth]{EUVIP_sparseness_loggabor}}
+\centering{\includegraphics[width=\linewidth]{EUVIP-sparseness_loggabor}}
 \caption{
 {\bf Filters used in this paper.} To mimic the average profile of receptive fields in the primary visual cortex, we use localized, orientation-selective filters. These are characterized by a cone-shaped spectrum (Left) and provide with the log-Gabor wavelets (Right)
 \label{fig:EUVIP_loggabor}}%
@@ -356,7 +375,7 @@ as represented by its position, orientation and scale.
 %------------------------------%
 %: \if\Supp1 See Supplementary Figure~\ref{fig:EUVIP_lena_movie} \fi
 \begin{figure}%[ht!]%[p!]
-\centering{\includegraphics[width=\linewidth]{EUVIP_lena_movie}}
+\centering{\includegraphics[width=\linewidth]{EUVIP-lena_movie.png}}
 \caption{
 {\bf Progressive reconstruction as a function of sparseness.}
 \label{fig:EUVIP_lena_movie}}%
@@ -391,12 +410,12 @@ as represented by its position, orientation and scale.
 %%------------------------------%
 %------------------------------%
 %: \if\Supp1 See Supplementary Figure~\ref{fig:EUVIP_proba_scaled} \fi
-\begin{figure}%[ht!]%[p!]
-\centering{\includegraphics[width=\linewidth]{EUVIP_sparseness_proba_scaled}}
-\caption{
-{\bf Histogram of scaled sparseness coefficients.} To show the generality of the parametric description of the distribution of coefficients in natural images, we show the distribution of scaled coefficients for each image $i$, when knowing the estimated coefficient $B_i$. This shows that scaled coefficients align on a similarly shaped distribution.
-\label{fig:EUVIP_proba_scaled}}%
-\end{figure}%
+%\begin{figure}%[ht!]%[p!]
+%\centering{\includegraphics[width=\linewidth]{EUVIP-sparseness_proba_scaled}}
+%\caption{
+%{\bf Histogram of scaled sparseness coefficients.} To show the generality of the parametric description of the distribution of coefficients in natural images, we show the distribution of scaled coefficients for each image $i$, when knowing the estimated coefficient $B_i$. This shows that scaled coefficients align on a similarly shaped distribution.
+%\label{fig:EUVIP_proba_scaled}}%
+%\end{figure}%
 %------------------------------%
 
 
@@ -534,8 +553,8 @@ as represented by its position, orientation and scale.
 % BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
 % style file from IEEE produces unsorted bibliography list.
 % -------------------------------------------------------------------------
-\bibliographystyle{IEEEbib}
-%\bibliographystyle{plainnat}
+%\bibliographystyle{IEEEbib}
+\bibliographystyle{plainnat}
 %
 %\bibitem[Atick(1992)]{Atick92}
 %\bibitem[Doi et~al.(2012)Doi, Gauthier, Field, Shlens, Sher, Greschner,
