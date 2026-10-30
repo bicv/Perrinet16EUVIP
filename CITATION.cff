@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the accompanying publication (preferred-citation below).
+type: software
+title: Biologically-inspired characterization of sparseness in natural images
+authors:
+- family-names: Perrinet
+  given-names: Laurent U
+  orcid: https://orcid.org/0000-0002-9536-010X
+repository-code: https://github.com/bicv/Perrinet16EUVIP
+url: https://laurentperrinet.github.io/publication/perrinet-16-euvip/
+license: GPL-3.0
+keywords:
+- primary-visual-cortex
+- sparse-coding
+preferred-citation:
+  type: conference-paper
+  title: Biologically-inspired characterization of sparseness in natural images
+  authors:
+  - family-names: Perrinet
+    given-names: Laurent U
+    orcid: https://orcid.org/0000-0002-9536-010X
+  conference:
+    name: 2016 6th European Workshop on Visual Information Processing (EUVIP)
+  start: '1'
+  end: '6'
+  publisher:
+    name: IEEE
+  doi: 10.1109/EUVIP.2016.7764592
+  year: 2016
+  url: https://laurentperrinet.github.io/publication/perrinet-16-euvip/
